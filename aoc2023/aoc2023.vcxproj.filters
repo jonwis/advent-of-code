@@ -21,9 +21,13 @@
     <ClCompile Include="day_1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="day_2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="aoc-input-01.txt" />
+    <Text Include="aoc-input-02.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
