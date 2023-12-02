@@ -90,3 +90,52 @@ void puzzle_2_1()
 
     std::cout << "Sum of possible games: " << sumOfPossibleGames << std::endl;
 }
+
+
+void puzzle_2_2()
+{
+    std::ifstream input("aoc-input-02.txt");
+    std::string line;
+    int sumOfGamePowers = 0;
+
+    while (std::getline(input, line))
+    {
+        // The lines are of the format:
+        //
+        // Game 31: 14 green, 1 blue, 8 red; 1 green, 2 blue; 1 green, 1 red, 1 blue
+        // Game 43: 1 green, 18 red, 8 blue; 7 red, 4 green, 5 blue; 1 blue, 18 red; 5 red, 8 blue
+        // Game 50: 9 red; 5 green, 2 blue, 10 red; 5 red, 1 green
+        //
+        // Split the line into the "Game NN" part and the rounds. Rounds are separated by ';'.
+        auto game_and_rounds = split(line, ":");
+        assert(game_and_rounds.size() == 2);
+
+        std::map<std::string, int> minColors{
+            { "red", 0 },
+            { "green", 0 },
+            { "blue", 0 },
+        };
+
+        int gameId = std::stoi(game_and_rounds[0].substr(5));
+
+        for (auto const& round : split(game_and_rounds[1], ";"))
+        {
+            for (auto const& colors : split(round, ","))
+            {
+                // Split the colors into the color and the number of cards.
+                auto color_and_count = split(colors, " ");
+                assert(color_and_count.size() == 2);
+                auto color = color_and_count[1];
+                auto count = std::stoi(color_and_count[0]);
+                
+                minColors[color] = std::max(minColors[color], count);
+            }
+        }
+
+        std::cout << "Game " << gameId << " has min colors: " << minColors["red"] << " red, " << minColors["green"] << " green, " << minColors["blue"] << " blue" << std::endl;
+
+        sumOfGamePowers += minColors["red"] * minColors["green"] * minColors["blue"];
+    }
+
+    std::cout << "Sum of min powers: " << sumOfGamePowers << std::endl;
+}
