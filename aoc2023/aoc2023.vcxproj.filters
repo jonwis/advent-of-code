@@ -18,8 +18,16 @@
     <ClCompile Include="aoc2023.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="day_1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="aoc-input-01.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
