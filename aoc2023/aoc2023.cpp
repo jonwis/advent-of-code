@@ -6,6 +6,7 @@ void puzzle_1_2();
 void puzzle_2_1();
 void puzzle_2_2();
 void puzzle_3_1();
+void puzzle_4_1();
 
 int main(int argc, char** argv)
 {
@@ -15,6 +16,7 @@ int main(int argc, char** argv)
         { "2.1", puzzle_2_1 },
         { "2.2", puzzle_2_2 },
         { "3.1", puzzle_3_1 },
+        { "4.1", puzzle_4_1 },
     };
 
     for (auto& [puzzle, func] : puzzles)
